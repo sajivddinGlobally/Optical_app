@@ -994,7 +994,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: DashedBorderBox(
         borderRadius: 10.r,
         // backgroundColor: const Color(0xFFF8FAFC),
-        backgroundColor: const Color(0xFFE9ECF2),
+        backgroundColor: Color(0xffe9ecf2),
         color: const Color(0xFFCBD5E1),
         dashLength: 5,
         gap: 3.5,

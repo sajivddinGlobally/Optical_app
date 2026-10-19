@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Design Size set from Figma mobile frame (375 x 812)
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,

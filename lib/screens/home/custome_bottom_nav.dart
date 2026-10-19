@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:optical_app/core/constants/app_colors.dart';
+import 'package:optical_app/screens/home/Browse_Screen/Browser_Screen.dart';
+import 'package:optical_app/screens/home/Cart_Screen/Card_Screen.dart';
 import 'package:optical_app/screens/home/home_screen.dart';
 
 class CustomeBottomNavBar extends StatefulWidget {
@@ -14,10 +15,10 @@ class CustomeBottomNavBar extends StatefulWidget {
 }
 
 class _CustomeBottomNavBarState extends State<CustomeBottomNavBar> {
-  List<Widget> screens = [
+  List<Widget> get screens => [
     HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    BrowserScreen(),
+    CardScreen(),
     HomeScreen(),
     HomeScreen(),
   ];
@@ -56,7 +57,7 @@ class _CustomeBottomNavBarState extends State<CustomeBottomNavBar> {
               _buildNavItem(
                 index: 1,
                 icon: Icons.search_rounded,
-                label: 'Find Lens',
+                label: 'Browse',
               ),
               _buildNavItem(
                 index: 2,
