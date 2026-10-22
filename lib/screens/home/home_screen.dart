@@ -51,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': null,
       'color': const Color(0xFF1B2333),
       'bg': const Color(0xFFF1F5F9),
+      'image': null,
     },
     {
       'id': 'blue_cut',
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': 'HOT',
       'color': const Color(0xFF2563EB),
       'bg': const Color(0xFFEFF6FF),
+      'image': 'assets/images/categories/cat_bluecut.jpg',
     },
     {
       'id': 'single_vision',
@@ -67,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': 'SV',
       'color': const Color(0xFF0D9488),
       'bg': const Color(0xFFF0FDFA),
+      'image': 'assets/images/categories/cat_singlevision.jpg',
     },
     {
       'id': 'progressive',
@@ -75,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': 'PRO',
       'color': const Color(0xFF7C3AED),
       'bg': const Color(0xFFF5F3FF),
+      'image': 'assets/images/categories/cat_progressive.jpg',
     },
     {
       'id': 'bifocal',
@@ -83,6 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': 'KT',
       'color': const Color(0xFF0284C7),
       'bg': const Color(0xFFF0F9FF),
+      'image': 'assets/images/categories/cat_bifocal.jpg',
     },
     {
       'id': 'rx_lab',
@@ -91,6 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': '24h',
       'color': const Color(0xFF9333EA),
       'bg': const Color(0xFFFAF5FF),
+      'image': 'assets/images/categories/cat_rx.jpg',
     },
     {
       'id': 'contact_lens',
@@ -99,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'badge': null,
       'color': const Color(0xFF059669),
       'bg': const Color(0xFFECFDF5),
+      'image': 'assets/images/categories/cat_contactlens.jpg',
     },
   ];
 
@@ -113,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'buttonText': 'Order Now',
       'bgGradient': [const Color(0xFF1B2333), const Color(0xFF24344D)],
       'badgeColor': const Color(0xFF38BDF8),
+      'image': 'assets/images/banners/banner_bluecut.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.blueCut,
       'badgeText': 'BLUE CUT',
@@ -125,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'buttonText': 'View Catalog',
       'bgGradient': [const Color(0xFF0F172A), const Color(0xFF1E293B)],
       'badgeColor': const Color(0xFFF59E0B),
+      'image': 'assets/images/banners/banner_frames.jpg',
       'isLens': false,
       'frameStyle': EyewearFrameStyle.classicSquare,
       'badgeText': 'NEW',
@@ -138,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'buttonText': 'Upload Rx',
       'bgGradient': [const Color(0xFF1E1B4B), const Color(0xFF312E81)],
       'badgeColor': const Color(0xFFA78BFA),
+      'image': 'assets/images/banners/banner_rxlab.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.rx,
       'badgeText': 'RX LAB',
@@ -155,6 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'discount': '31% OFF',
       'rating': 4.9,
       'reviews': 82,
+      'image': 'assets/images/products/lens_blusafe.jpg',
       'lensStyle': LensTypeStyle.singleVision,
       'badgeText': 'SUPER DEAL',
       'inStock': true,
@@ -168,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'discount': '25% OFF',
       'rating': 4.8,
       'reviews': 64,
+      'image': 'assets/images/products/lens_veriwide.jpg',
       'lensStyle': LensTypeStyle.progressive,
       'badgeText': 'PROGRESSIVE',
       'inStock': true,
@@ -181,6 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'discount': '30% OFF',
       'rating': 4.9,
       'reviews': 45,
+      'image': 'assets/images/products/frame_aviator.jpg',
       'isFrame': true,
       'frameStyle': EyewearFrameStyle.aviator,
       'badgeText': 'POLARIZED',
@@ -195,6 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'discount': '25% OFF',
       'rating': 4.7,
       'reviews': 39,
+      'image': 'assets/images/products/lens_photochromic.jpg',
       'lensStyle': LensTypeStyle.blueCut,
       'badgeText': 'TRANSITION',
       'inStock': true,
@@ -213,6 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 180,
       'rating': 4.9,
       'reviews': 128,
+      'image': 'assets/images/products/lens_airsmart.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.blueCut,
       'badgeText': 'BLUE CUT',
@@ -229,6 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 450,
       'rating': 4.8,
       'reviews': 94,
+      'image': 'assets/images/products/lens_veriwide.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.progressive,
       'badgeText': 'PROGRESSIVE',
@@ -245,6 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 899,
       'rating': 4.9,
       'reviews': 52,
+      'image': 'assets/images/products/frame_titanium.jpg',
       'isLens': false,
       'frameStyle': EyewearFrameStyle.classicSquare,
       'badgeText': 'TITANIUM',
@@ -261,6 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 130,
       'rating': 4.7,
       'reviews': 110,
+      'image': 'assets/images/products/lens_aerolite.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.singleVision,
       'badgeText': 'SINGLE VISION',
@@ -277,6 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 320,
       'rating': 4.9,
       'reviews': 76,
+      'image': 'assets/images/products/lens_blusafe.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.singleVision,
       'badgeText': '1.67 ULTRA',
@@ -293,6 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 600,
       'rating': 4.8,
       'reviews': 41,
+      'image': 'assets/images/products/frame_vintage.jpg',
       'isLens': false,
       'frameStyle': EyewearFrameStyle.roundVintage,
       'badgeText': 'VINTAGE',
@@ -309,6 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 750,
       'rating': 4.9,
       'reviews': 63,
+      'image': 'assets/images/products/frame_sunglasses.jpg',
       'isLens': false,
       'frameStyle': EyewearFrameStyle.sunglassesSmoke,
       'badgeText': 'POLARIZED',
@@ -325,6 +346,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 220,
       'rating': 4.6,
       'reviews': 58,
+      'image': 'assets/images/categories/cat_bifocal.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.bifocal,
       'badgeText': 'KT BIFOCAL',
@@ -341,6 +363,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'originalPrice': 650,
       'rating': 5.0,
       'reviews': 91,
+      'image': 'assets/images/categories/cat_rx.jpg',
       'isLens': true,
       'lensStyle': LensTypeStyle.rx,
       'badgeText': '24H RX',
@@ -1004,18 +1027,63 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       flex: 4,
                       child: Center(
-                        child: isLens
-                            ? LensSphereGraphic(
-                                style: banner['lensStyle'] as LensTypeStyle,
-                                size: 58,
-                                badgeText: banner['badgeText'] as String?,
-                              )
-                            : EyewearFrameGraphic(
-                                style:
-                                    banner['frameStyle'] as EyewearFrameStyle,
-                                size: 52,
-                                badgeText: banner['badgeText'] as String?,
+                        child: Container(
+                          width: 80.w,
+                          height: 80.w,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(16.r),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.25),
+                              width: 1.w,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withValues(alpha: 0.2),
+                                blurRadius: 10,
+                                offset: const Offset(0, 4),
                               ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15.r),
+                            child: banner['image'] != null
+                                ? Image.asset(
+                                    banner['image'] as String,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) => isLens
+                                        ? LensSphereGraphic(
+                                            style: banner['lensStyle']
+                                                as LensTypeStyle,
+                                            size: 58,
+                                            badgeText: banner['badgeText']
+                                                as String?,
+                                          )
+                                        : EyewearFrameGraphic(
+                                            style: banner['frameStyle']
+                                                as EyewearFrameStyle,
+                                            size: 52,
+                                            badgeText: banner['badgeText']
+                                                as String?,
+                                          ),
+                                  )
+                                : (isLens
+                                    ? LensSphereGraphic(
+                                        style: banner['lensStyle']
+                                            as LensTypeStyle,
+                                        size: 58,
+                                        badgeText:
+                                            banner['badgeText'] as String?,
+                                      )
+                                    : EyewearFrameGraphic(
+                                        style: banner['frameStyle']
+                                            as EyewearFrameStyle,
+                                        size: 52,
+                                        badgeText:
+                                            banner['badgeText'] as String?,
+                                      )),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -1153,18 +1221,33 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ]
                                   : null,
                             ),
-                            child: Icon(
-                              cat['icon'] as IconData,
-                              size: 24.sp,
-                              color: isSelected
-                                  ? Colors.white
-                                  : (cat['color'] as Color),
-                            ),
+                            child: cat['image'] != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(15.r),
+                                    child: Image.asset(
+                                      cat['image'] as String,
+                                      fit: BoxFit.cover,
+                                      errorBuilder: (_, __, ___) => Icon(
+                                        cat['icon'] as IconData,
+                                        size: 24.sp,
+                                        color: isSelected
+                                            ? Colors.white
+                                            : (cat['color'] as Color),
+                                      ),
+                                    ),
+                                  )
+                                : Icon(
+                                    cat['icon'] as IconData,
+                                    size: 24.sp,
+                                    color: isSelected
+                                        ? Colors.white
+                                        : (cat['color'] as Color),
+                                  ),
                           ),
                           // Badge (e.g. HOT, NEW, 24h)
                           if (cat['badge'] != null)
                             Positioned(
-                              top: -4.h,
+                              // top: 1.h,
                               right: -4.w,
                               child: Container(
                                 padding: EdgeInsets.symmetric(
@@ -1493,17 +1576,43 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(10.r),
                           ),
                           alignment: Alignment.center,
-                          child: deal['isFrame'] == true
-                              ? EyewearFrameGraphic(
-                                  style:
-                                      deal['frameStyle'] as EyewearFrameStyle,
-                                  size: 44,
+                          child: deal['image'] != null
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                  child: Image.asset(
+                                    deal['image'] as String,
+                                    width: double.infinity,
+                                    height: 76.h,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) =>
+                                        deal['isFrame'] == true
+                                            ? EyewearFrameGraphic(
+                                                style: deal['frameStyle']
+                                                    as EyewearFrameStyle,
+                                                size: 44,
+                                              )
+                                            : LensSphereGraphic(
+                                                style: deal['lensStyle']
+                                                    as LensTypeStyle,
+                                                size: 46,
+                                                badgeText: deal['badgeText']
+                                                    as String?,
+                                              ),
+                                  ),
                                 )
-                              : LensSphereGraphic(
-                                  style: deal['lensStyle'] as LensTypeStyle,
-                                  size: 46,
-                                  badgeText: deal['badgeText'] as String?,
-                                ),
+                              : (deal['isFrame'] == true
+                                  ? EyewearFrameGraphic(
+                                      style: deal['frameStyle']
+                                          as EyewearFrameStyle,
+                                      size: 44,
+                                    )
+                                  : LensSphereGraphic(
+                                      style: deal['lensStyle']
+                                          as LensTypeStyle,
+                                      size: 46,
+                                      badgeText:
+                                          deal['badgeText'] as String?,
+                                    )),
                         ),
                         // Discount Tag
                         Positioned(
@@ -2089,17 +2198,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 alignment: Alignment.center,
-                child: product['isLens'] == true
-                    ? LensSphereGraphic(
-                        style: product['lensStyle'] as LensTypeStyle,
-                        size: 56,
-                        badgeText: product['badgeText'] as String?,
+                child: product['image'] != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(10.r),
+                        child: Image.asset(
+                          product['image'] as String,
+                          width: double.infinity,
+                          height: 98.h,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) =>
+                              product['isLens'] == true
+                                  ? LensSphereGraphic(
+                                      style: product['lensStyle']
+                                          as LensTypeStyle,
+                                      size: 56,
+                                      badgeText:
+                                          product['badgeText'] as String?,
+                                    )
+                                  : EyewearFrameGraphic(
+                                      style: product['frameStyle']
+                                          as EyewearFrameStyle,
+                                      size: 52,
+                                      badgeText:
+                                          product['badgeText'] as String?,
+                                    ),
+                        ),
                       )
-                    : EyewearFrameGraphic(
-                        style: product['frameStyle'] as EyewearFrameStyle,
-                        size: 52,
-                        badgeText: product['badgeText'] as String?,
-                      ),
+                    : (product['isLens'] == true
+                        ? LensSphereGraphic(
+                            style: product['lensStyle'] as LensTypeStyle,
+                            size: 56,
+                            badgeText: product['badgeText'] as String?,
+                          )
+                        : EyewearFrameGraphic(
+                            style: product['frameStyle']
+                                as EyewearFrameStyle,
+                            size: 52,
+                            badgeText: product['badgeText'] as String?,
+                          )),
               ),
               // Top tag (e.g. BESTSELLER, NEW, TITANIUM)
               Positioned(

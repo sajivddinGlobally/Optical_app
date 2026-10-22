@@ -1088,6 +1088,7 @@ class _ReviewPlaceorderScreenState extends State<ReviewPlaceorderScreen> {
                 bgColor: const Color(0xFFE6F7F2),
                 borderColor: const Color(0xFFBBEFDF),
                 lensStyle: LensTypeStyle.progressive,
+                imagePath: 'assets/images/products/lens_veriwide.jpg',
               ),
               SizedBox(width: 8.w),
 
@@ -1096,6 +1097,7 @@ class _ReviewPlaceorderScreenState extends State<ReviewPlaceorderScreen> {
                 bgColor: const Color(0xFFF1F5F9),
                 borderColor: const Color(0xFFE2E8F0),
                 lensStyle: LensTypeStyle.singleVision,
+                imagePath: 'assets/images/products/lens_aerolite.jpg',
               ),
               SizedBox(width: 8.w),
 
@@ -1104,6 +1106,7 @@ class _ReviewPlaceorderScreenState extends State<ReviewPlaceorderScreen> {
                 bgColor: const Color(0xFFEBF3FE),
                 borderColor: const Color(0xFFCFE2FE),
                 lensStyle: LensTypeStyle.blueCut,
+                imagePath: 'assets/images/products/lens_airsmart.jpg',
               ),
             ],
           ),
@@ -1223,6 +1226,7 @@ class _ReviewPlaceorderScreenState extends State<ReviewPlaceorderScreen> {
     required Color bgColor,
     required Color borderColor,
     required LensTypeStyle lensStyle,
+    String? imagePath,
   }) {
     return Container(
       width: 42.w,
@@ -1233,7 +1237,19 @@ class _ReviewPlaceorderScreenState extends State<ReviewPlaceorderScreen> {
         border: Border.all(color: borderColor, width: 0.8),
       ),
       alignment: Alignment.center,
-      child: LensSphereGraphic(style: lensStyle, size: 32),
+      child: imagePath != null
+          ? ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.asset(
+                imagePath,
+                width: 42.w,
+                height: 42.w,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) =>
+                    LensSphereGraphic(style: lensStyle, size: 32),
+              ),
+            )
+          : LensSphereGraphic(style: lensStyle, size: 32),
     );
   }
 

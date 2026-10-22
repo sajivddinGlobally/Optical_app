@@ -20,31 +20,31 @@ class _BrowserScreenState extends State<BrowserScreen> {
       "title": "AirSmart",
       "sub": "Index 1.56 · 1.61 · 1.67",
       "price": "95",
-      "img": "assets/lens_blue.png",
+      "img": "assets/images/products/lens_airsmart.jpg",
     },
     {
       "title": "Blu Safe",
       "sub": "Index 1.56 · 1.61",
       "price": "110",
-      "img": "assets/lens_blue.png",
+      "img": "assets/images/products/lens_blusafe.jpg",
     },
     {
       "title": "VeriWide",
       "sub": "Index 1.56 · 1.61 · 1.67",
       "price": "129",
-      "img": "assets/lens_blue.png",
+      "img": "assets/images/products/lens_veriwide.jpg",
     },
     {
       "title": "Lords",
       "sub": "Index 1.56",
       "price": "98",
-      "img": "assets/lens_blue.png",
+      "img": "assets/images/products/lens_photochromic.jpg",
     },
     {
       "title": "SLX",
       "sub": "Index 1.56 · 1.61",
       "price": "105",
-      "img": "assets/lens_blue.png",
+      "img": "assets/images/products/lens_aerolite.jpg",
     },
   ];
   @override
@@ -156,6 +156,8 @@ class _BrowserScreenState extends State<BrowserScreen> {
                             title: 'Single Vision',
                             subtitle: 'SPH + CYL',
                             lensStyle: LensTypeStyle.singleVision,
+                            imagePath:
+                                'assets/images/categories/cat_singlevision.jpg',
                           ),
                         ),
                         SizedBox(width: 12.w),
@@ -164,6 +166,8 @@ class _BrowserScreenState extends State<BrowserScreen> {
                             title: 'KT (Bifocal)',
                             subtitle: 'SPH, CYL, AXIS, ADD',
                             lensStyle: LensTypeStyle.bifocal,
+                            imagePath:
+                                'assets/images/categories/cat_bifocal.jpg',
                           ),
                         ),
                       ],
@@ -176,6 +180,8 @@ class _BrowserScreenState extends State<BrowserScreen> {
                             title: 'Progressive',
                             subtitle: 'SPH, CYL, AXIS, ADD',
                             lensStyle: LensTypeStyle.progressive,
+                            imagePath:
+                                'assets/images/categories/cat_progressive.jpg',
                           ),
                         ),
                         SizedBox(width: 12.w),
@@ -185,6 +191,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
                             subtitle: 'Made to order · ~1 day',
                             lensStyle: LensTypeStyle.rx,
                             isRxCard: true,
+                            imagePath: 'assets/images/categories/cat_rx.jpg',
                           ),
                         ),
                       ],
@@ -269,6 +276,15 @@ class _BrowserScreenState extends State<BrowserScreen> {
                                           child: Image.asset(
                                             item["img"]!,
                                             fit: BoxFit.cover,
+                                            errorBuilder: (context, error, stackTrace) => Container(
+                                              color: const Color(0xFFEBF4FF),
+                                              alignment: Alignment.center,
+                                              child: const Icon(
+                                                Icons.visibility_outlined,
+                                                color: AppColors.primaryDark,
+                                                size: 24,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -420,6 +436,7 @@ class _BrowserScreenState extends State<BrowserScreen> {
     required String subtitle,
     required LensTypeStyle lensStyle,
     bool isRxCard = false,
+    String? imagePath,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -445,7 +462,19 @@ class _BrowserScreenState extends State<BrowserScreen> {
               borderRadius: BorderRadius.circular(10.r),
             ),
             alignment: Alignment.center,
-            child: LensSphereGraphic(style: lensStyle, size: 54),
+            child: imagePath != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(10.r),
+                    child: Image.asset(
+                      imagePath,
+                      width: double.infinity,
+                      height: 72.h,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          LensSphereGraphic(style: lensStyle, size: 54),
+                    ),
+                  )
+                : LensSphereGraphic(style: lensStyle, size: 54),
           ),
 
           SizedBox(height: 10.h),
@@ -519,7 +548,19 @@ class _BrowserScreenState extends State<BrowserScreen> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.r),
-                child: Image.asset(imagePath, fit: BoxFit.cover),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Container(
+                    color: const Color(0xFFEBF4FF),
+                    alignment: Alignment.center,
+                    child: const Icon(
+                      Icons.visibility_outlined,
+                      color: AppColors.primaryDark,
+                      size: 28,
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(width: 14.w),
