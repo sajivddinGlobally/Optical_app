@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:optical_app/core/constants/app_colors.dart';
+import 'package:optical_app/screens/home/Review_Place_Order_Screen/Review_PlaceOrder_Screen.dart';
 
 class CardScreen extends StatefulWidget {
   const CardScreen({super.key});
@@ -611,7 +613,12 @@ class CardScreenState extends State<CardScreen> {
           height: 52.h,
           child: ElevatedButton(
             onPressed: () {
-              // Checkout action logic
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => ReviewPlaceorderScreen(),
+                ),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF17212D),

@@ -3,12 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:optical_app/core/constants/app_colors.dart';
+import 'package:optical_app/screens/home/Account_Profile_Screen/Account_Profile_Screen.dart';
 import 'package:optical_app/screens/home/Browse_Screen/Browser_Screen.dart';
 import 'package:optical_app/screens/home/Cart_Screen/Card_Screen.dart';
+import 'package:optical_app/screens/home/Order_Screen/Order_Screen.dart';
 import 'package:optical_app/screens/home/home_screen.dart';
 
 class CustomeBottomNavBar extends StatefulWidget {
-  const CustomeBottomNavBar({super.key});
+  final int initialIndex;
+  const CustomeBottomNavBar({super.key, this.initialIndex = 0});
 
   @override
   State<CustomeBottomNavBar> createState() => _CustomeBottomNavBarState();
@@ -19,10 +22,16 @@ class _CustomeBottomNavBarState extends State<CustomeBottomNavBar> {
     HomeScreen(),
     BrowserScreen(),
     CardScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    OrderScreen(),
+    AccountProfileScreen(),
   ];
-  int selectedIndex = 0;
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

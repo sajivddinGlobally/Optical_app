@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:optical_app/core/constants/app_colors.dart';
 import 'package:optical_app/core/widgets/dashed_border_box.dart';
 import 'package:optical_app/screens/sign_up/account_review_screen.dart';
@@ -424,9 +425,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // Step 2: Tell us about your shop
-  // ---------------------------------------------------------------------------
   Widget _buildStepTwo() {
     return Column(
       children: [
@@ -989,7 +987,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildUploadDashedBox({VoidCallback? onTap}) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        _showDocumentUploadBottomSheet(
+          docName: 'Aadhaar Card',
+          onUploaded: (name, size) {
+            setState(() {
+              _aadhaarFileName = name;
+              _aadhaarFileSize = size;
+              _aadhaarUploaded = true;
+            });
+          },
+        );
+      },
       borderRadius: BorderRadius.circular(10.r),
       child: DashedBorderBox(
         borderRadius: 10.r,
@@ -1048,6 +1057,61 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
+  Future<void> _pickDocumentImage({
+    required ImageSource source,
+    required String docName,
+    required Function(String fileName, String fileSize) onUploaded,
+  }) async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      final XFile? pickedFile = await picker.pickImage(
+        source: source,
+        imageQuality: 85,
+      );
+
+      if (pickedFile == null) return;
+
+      final int bytes = await pickedFile.length();
+      final String fileSize = bytes < 1024
+          ? '$bytes B'
+          : bytes < 1024 * 1024
+          ? '${(bytes / 1024).toStringAsFixed(1)} KB'
+          : '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
+
+      final String fileName = pickedFile.name.isNotEmpty
+          ? pickedFile.name
+          : '${docName.toLowerCase().replaceAll(' ', '_')}.jpg';
+
+      onUploaded(fileName, '$fileSize · uploaded');
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              '$docName uploaded successfully!',
+              style: GoogleFonts.plusJakartaSans(),
+            ),
+            backgroundColor: AppColors.primaryDark,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Could not select image: $e',
+              style: GoogleFonts.plusJakartaSans(),
+            ),
+            backgroundColor: Colors.red.shade700,
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    }
+  }
+
   void _showDocumentUploadBottomSheet({
     required String docName,
     required Function(String fileName, String fileSize) onUploaded,
@@ -1104,18 +1168,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   subtitle: 'Capture document directly with camera',
                   onTap: () {
                     Navigator.pop(ctx);
-                    final safeName =
-                        '${docName.toLowerCase().replaceAll(' ', '_')}_photo.jpg';
-                    onUploaded(safeName, '176 KB · uploaded');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          '$docName captured & uploaded!',
-                          style: GoogleFonts.plusJakartaSans(),
-                        ),
-                        backgroundColor: AppColors.primaryDark,
-                        duration: const Duration(seconds: 2),
-                      ),
+                    _pickDocumentImage(
+                      source: ImageSource.camera,
+                      docName: docName,
+                      onUploaded: onUploaded,
                     );
                   },
                 ),
@@ -1126,44 +1182,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   subtitle: 'Select image from device photos',
                   onTap: () {
                     Navigator.pop(ctx);
-                    final safeName =
-                        '${docName.toLowerCase().replaceAll(' ', '_')}_image.jpg';
-                    onUploaded(safeName, '184 KB · uploaded');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          '$docName uploaded from gallery!',
-                          style: GoogleFonts.plusJakartaSans(),
-                        ),
-                        backgroundColor: AppColors.primaryDark,
-                        duration: const Duration(seconds: 2),
-                      ),
+                    _pickDocumentImage(
+                      source: ImageSource.gallery,
+                      docName: docName,
+                      onUploaded: onUploaded,
                     );
                   },
                 ),
-                SizedBox(height: 10.h),
-                _buildUploadOption(
-                  icon: Icons.picture_as_pdf_outlined,
-                  title: 'Upload PDF / Document',
-                  subtitle: 'Select PDF file up to 200 KB',
-                  onTap: () {
-                    Navigator.pop(ctx);
-                    final safeName =
-                        '${docName.toLowerCase().replaceAll(' ', '_')}.pdf';
-                    onUploaded(safeName, '142 KB · uploaded');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          '$docName PDF uploaded successfully!',
-                          style: GoogleFonts.plusJakartaSans(),
-                        ),
-                        backgroundColor: AppColors.primaryDark,
-                        duration: const Duration(seconds: 2),
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 8.h),
+                // SizedBox(height: 10.h),
+                // _buildUploadOption(
+                //   icon: Icons.picture_as_pdf_outlined,
+                //   title: 'Upload PDF / Document',
+                //   subtitle: 'Select PDF file up to 200 KB',
+                //   onTap: () {
+                //     Navigator.pop(ctx);
+                //     final safeName =
+                //         '${docName.toLowerCase().replaceAll(' ', '_')}.pdf';
+                //     onUploaded(safeName, '142 KB · uploaded');
+                //     ScaffoldMessenger.of(context).showSnackBar(
+                //       SnackBar(
+                //         content: Text(
+                //           '$docName PDF uploaded successfully!',
+                //           style: GoogleFonts.plusJakartaSans(),
+                //         ),
+                //         backgroundColor: AppColors.primaryDark,
+                //         duration: const Duration(seconds: 2),
+                //       ),
+                //     );
+                //   },
+                // ),
+                // SizedBox(height: 8.h),
               ],
             ),
           ),
