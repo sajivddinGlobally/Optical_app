@@ -1053,35 +1053,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fit: BoxFit.cover,
                                     errorBuilder: (_, __, ___) => isLens
                                         ? LensSphereGraphic(
-                                            style: banner['lensStyle']
-                                                as LensTypeStyle,
+                                            style:
+                                                banner['lensStyle']
+                                                    as LensTypeStyle,
                                             size: 58,
-                                            badgeText: banner['badgeText']
-                                                as String?,
+                                            badgeText:
+                                                banner['badgeText'] as String?,
                                           )
                                         : EyewearFrameGraphic(
-                                            style: banner['frameStyle']
-                                                as EyewearFrameStyle,
+                                            style:
+                                                banner['frameStyle']
+                                                    as EyewearFrameStyle,
                                             size: 52,
-                                            badgeText: banner['badgeText']
-                                                as String?,
+                                            badgeText:
+                                                banner['badgeText'] as String?,
                                           ),
                                   )
                                 : (isLens
-                                    ? LensSphereGraphic(
-                                        style: banner['lensStyle']
-                                            as LensTypeStyle,
-                                        size: 58,
-                                        badgeText:
-                                            banner['badgeText'] as String?,
-                                      )
-                                    : EyewearFrameGraphic(
-                                        style: banner['frameStyle']
-                                            as EyewearFrameStyle,
-                                        size: 52,
-                                        badgeText:
-                                            banner['badgeText'] as String?,
-                                      )),
+                                      ? LensSphereGraphic(
+                                          style:
+                                              banner['lensStyle']
+                                                  as LensTypeStyle,
+                                          size: 58,
+                                          badgeText:
+                                              banner['badgeText'] as String?,
+                                        )
+                                      : EyewearFrameGraphic(
+                                          style:
+                                              banner['frameStyle']
+                                                  as EyewearFrameStyle,
+                                          size: 52,
+                                          badgeText:
+                                              banner['badgeText'] as String?,
+                                        )),
                           ),
                         ),
                       ),
@@ -1586,33 +1590,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fit: BoxFit.cover,
                                     errorBuilder: (_, __, ___) =>
                                         deal['isFrame'] == true
-                                            ? EyewearFrameGraphic(
-                                                style: deal['frameStyle']
+                                        ? EyewearFrameGraphic(
+                                            style:
+                                                deal['frameStyle']
                                                     as EyewearFrameStyle,
-                                                size: 44,
-                                              )
-                                            : LensSphereGraphic(
-                                                style: deal['lensStyle']
+                                            size: 44,
+                                          )
+                                        : LensSphereGraphic(
+                                            style:
+                                                deal['lensStyle']
                                                     as LensTypeStyle,
-                                                size: 46,
-                                                badgeText: deal['badgeText']
-                                                    as String?,
-                                              ),
+                                            size: 46,
+                                            badgeText:
+                                                deal['badgeText'] as String?,
+                                          ),
                                   ),
                                 )
                               : (deal['isFrame'] == true
-                                  ? EyewearFrameGraphic(
-                                      style: deal['frameStyle']
-                                          as EyewearFrameStyle,
-                                      size: 44,
-                                    )
-                                  : LensSphereGraphic(
-                                      style: deal['lensStyle']
-                                          as LensTypeStyle,
-                                      size: 46,
-                                      badgeText:
-                                          deal['badgeText'] as String?,
-                                    )),
+                                    ? EyewearFrameGraphic(
+                                        style:
+                                            deal['frameStyle']
+                                                as EyewearFrameStyle,
+                                        size: 44,
+                                      )
+                                    : LensSphereGraphic(
+                                        style:
+                                            deal['lensStyle'] as LensTypeStyle,
+                                        size: 46,
+                                        badgeText: deal['badgeText'] as String?,
+                                      )),
                         ),
                         // Discount Tag
                         Positioned(
@@ -2208,34 +2214,31 @@ class _HomeScreenState extends State<HomeScreen> {
                           fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) =>
                               product['isLens'] == true
-                                  ? LensSphereGraphic(
-                                      style: product['lensStyle']
-                                          as LensTypeStyle,
-                                      size: 56,
-                                      badgeText:
-                                          product['badgeText'] as String?,
-                                    )
-                                  : EyewearFrameGraphic(
-                                      style: product['frameStyle']
+                              ? LensSphereGraphic(
+                                  style: product['lensStyle'] as LensTypeStyle,
+                                  size: 56,
+                                  badgeText: product['badgeText'] as String?,
+                                )
+                              : EyewearFrameGraphic(
+                                  style:
+                                      product['frameStyle']
                                           as EyewearFrameStyle,
-                                      size: 52,
-                                      badgeText:
-                                          product['badgeText'] as String?,
-                                    ),
+                                  size: 52,
+                                  badgeText: product['badgeText'] as String?,
+                                ),
                         ),
                       )
                     : (product['isLens'] == true
-                        ? LensSphereGraphic(
-                            style: product['lensStyle'] as LensTypeStyle,
-                            size: 56,
-                            badgeText: product['badgeText'] as String?,
-                          )
-                        : EyewearFrameGraphic(
-                            style: product['frameStyle']
-                                as EyewearFrameStyle,
-                            size: 52,
-                            badgeText: product['badgeText'] as String?,
-                          )),
+                          ? LensSphereGraphic(
+                              style: product['lensStyle'] as LensTypeStyle,
+                              size: 56,
+                              badgeText: product['badgeText'] as String?,
+                            )
+                          : EyewearFrameGraphic(
+                              style: product['frameStyle'] as EyewearFrameStyle,
+                              size: 52,
+                              badgeText: product['badgeText'] as String?,
+                            )),
               ),
               // Top tag (e.g. BESTSELLER, NEW, TITANIUM)
               Positioned(
